@@ -1,0 +1,51 @@
+.loginbody {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width:65%;
+    position: fixed;
+    /* border:2px solid gray; */
+    top:20%;
+    left:180px;
+    height:60vh;
+    border-radius: 50px;
+  }
+.loginleft{
+    width:30%;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+.loginright{
+    width: 35%;
+    position:fixed;
+    left:35%;
+    top:150px;
+}
+
+  
+  .emaillog,
+  .passlog,
+  .loginbut {
+    margin-bottom: 15px;
+    margin-top: 25px;
+  }
+ .emaillog{
+    width:50%;
+    margin-left: 35%;
+ }
+  .passslogin {
+    width: 50%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-left: 100px;
+  }
+  
+  .loginbut button {
+    background-color: red;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 60px;
+  }
+  
+  

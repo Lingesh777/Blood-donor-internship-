@@ -1,0 +1,61 @@
+.signupbody {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width:65%;
+  position: fixed;
+  top:60px;
+  left:180px;
+  height:80vh;
+  border-radius: 50px;
+  }
+  .signupleft{
+    /* border:2px solid gray; */
+    width:35%;
+    height:70vh;
+    margin-top: 20px;
+  }
+  .signupright{
+    /* border:2px solid black; */
+    width:30%;
+    position: fixed;
+    left:45%;
+    top:65px;
+  }
+  
+  .names,
+  .emails,
+  .passs,
+  .mobiles,
+  .districts,
+  .bloods,
+  .genders,
+  .roles,
+  .signbut {
+    margin-bottom: 10px;
+    margin-top: 7px;
+  }
+  
+  .namesign,
+  .emailsign,
+  .passsign,
+  .mobilesign,
+  .districtsign{
+    width: 100%;
+    padding: 6px;
+    box-sizing: border-box;
+  }
+  
+  .signbut button {
+    background-color:red;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .passsign{
+    width: 90%;
+    padding: 8px;
+    box-sizing: border-box;
+    /* border-radius: 5px; */
+  }
+  
