@@ -42,7 +42,7 @@ export const View = () => {
   return (
     <>
     <Topbar/>
-        <h2>Donors , Friends To Support</h2>
+        <h2 style={{marginTop:'50px'}}>Donors , Friends To Support</h2>
             <div className='viewbody'>
                 <tr>
                     <th>Id</th>
@@ -52,7 +52,7 @@ export const View = () => {
                     <th>District</th>
                     <th>Bloodgroup</th>
                     <th>Gender</th>
-                    <th>Role</th>
+                    {/* <th>Role</th> */}
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -65,7 +65,7 @@ export const View = () => {
                         <td>{u.district}</td>
                         <td>{u.bloodgroup}</td>
                         <td>{u.gender}</td>
-                        <td>{u.role}</td>
+                        {/* <td>{u.role}</td> */}
                         <td onClick={()=>{edituser(u)}} style={{cursor:'pointer'}} ><EditIcon/></td>
                         <td onClick={()=>{deleuser(u)}} style={{cursor:'pointer'}}><DeleteIcon/></td>
 

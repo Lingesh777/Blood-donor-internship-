@@ -22,9 +22,15 @@ export const Login = () => {
         const ro=res.data[0].role;
         if(res.data[0].role==='Admin'){
             navigate('/view')
+            localStorage.setItem('uid',res.data[0].uid)
+            localStorage.setItem('name',res.data[0].name)
+            localStorage.setItem('email',res.data[0].email)
         }
         else{
-            navigate(`/viewuser/${res.data[0].uid}`)
+            navigate('/viewuser')
+            localStorage.setItem('uid',res.data[0].uid)
+            localStorage.setItem('name',res.data[0].name)
+            localStorage.setItem('email',res.data[0].email)
         }
     }else{
         navigate('/signup')
@@ -43,7 +49,7 @@ export const Login = () => {
                 <input type="email" className="emaillogin" placeholder='Email' id='email' onChange={handleChange} value={log.email}/>
             </div>
             <div className="passlog">
-                <input type="password" className="passslogin" placeholder='Password' id='password' onChange={handleChange} value={log.password}/>
+                <input type="password" style={{width:"24vw",marginLeft:"170px"}} className="passslogin" placeholder='Password' id='password' onChange={handleChange} value={log.password}/>
             </div>
             <div className="loginbut">
                 <button onClick={()=>{handleSubmit(log)}}>Login</button>

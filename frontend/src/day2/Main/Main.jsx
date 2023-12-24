@@ -1,65 +1,97 @@
-import React, { useState } from 'react'
+import React, { useState,useRef, useEffect } from 'react'
 import './Main.css'
 import { Topbar } from '../Topbar/Topbar'
 import { useDispatch } from 'react-redux'
-import { adduser } from '../Service/api'
+import { adduser, viewsign } from '../Service/api'
 import { useNavigate } from 'react-router-dom'
+import emailjs from '@emailjs/browser';
+import { TopbarUser } from '../Topbar/TopbarUser'
 
 export const Main = () => {
     const navigate=useNavigate()
     const dispatch=useDispatch();
+    const form=useRef();
     const [add,setAdd]=useState({
-        uid:'',name:'',email:'',district:'',mobile:'',bloodgroup:'',gender:''
+        email:'',message:'',name:''
     })
     const handleChange=(e)=>{
         e.preventDefault();
         setAdd({...add,[e.target.id]:e.target.value})
     }
-    const handleSubmit=async(add)=>{
-        // const uid=new Date().getTime().toString();
-        // dispatch(adduser({ ...add, uid }));
-        const res=await adduser(add)
-        console.log(res.data)
-        setAdd({name:'',email:'',mobile:'',district:'',bloodgroup:'',gender:''})
+
+    const[user,setUser]=useState([]);
+    const fetchuser=async()=>{
+      try{
+          const res=await viewsign();
+          console.log(res.data)
+          setUser(res.data)
+      }
+      catch(error){
+        console.log("error")
+      }
     }
+    useEffect(()=>{
+      fetchuser();
+    },[])
+
+
+    // const sendEmail = (e) => {
+    //     e.preventDefault();
+    
+    //     const emailArray=user.map((u)=> u.email)
+
+    //     emailjs.sendForm('service_e8l32up', 'template_hlhy0ql', form.current, 'Ao6DAsfBzy69RGoAL',{toemail:emailArray.join(',')})
+    //       .then((result) => {
+    //           console.log(result.text);
+    //           alert('Email Send');
+    //       }, (error) => {
+    //           console.log(error.text);
+    //       });
+    //     setAdd({name:'',email:'',message:''})
+    //   };
+
+    const sendEmail = async (e) => {
+        e.preventDefault();
+    
+        for (const users of user) {
+          const emailParams = {
+            toemail: users.email,
+            from_name: add.name,
+            message: add.message
+          };
+    
+          await emailjs.send('service_e8l32up', 'template_hlhy0ql', emailParams, 'Ao6DAsfBzy69RGoAL');
+        }
+    
+        alert('Email Sucessfully sent to all');
+    
+        setAdd({message: '' });
+        navigate('/viewuser')
+      };
+
+      const name=localStorage.getItem('name');
+      const email=localStorage.getItem('email');
+
   return (
     <>
-    <Topbar/>
+    <TopbarUser/>
     <div className='mainbody'>
-        <div className="namein">
-            <input type="text" className="namemain" placeholder='Name' id='name' onChange={handleChange} value={add.name}/>
+    <form ref={form} onSubmit={sendEmail}>
+        <div className="namein" style={{marginTop:'20px'}} >
+            <input type="text" className="namemain" placeholder='Name' name="username" id='name' value={name}/>
         </div>
         <div className="emailin">
-            <input type="email" className="emailmain" placeholder='Email' id='email' onChange={handleChange} value={add.email}/>
+            <input type="email" className="emailmain" placeholder='Email' name='toemail' id='email' onChange={handleChange} value={email}/>
         </div>
-        <div className="mobilein">
-            <input type="number" className="mobilemain" placeholder='Mobile' id='mobile' onChange={handleChange} value={add.mobile}/>
-        </div>
-        <div className="districtin">
-            <input type="text" className="districtmain" placeholder='District' id='district' onChange={handleChange} value={add.district}/>
-        </div>
-        <div className="bloodin">
-            <select className='bloodmain' id='bloodgroup' onChange={handleChange} value={add.bloodgroup}>
-                <option value=''>Select Blood Group</option>
-                <option value='A+'>A+</option>
-                <option value='A-'>A-</option>
-                <option value='B+'>B+</option>
-                <option value='B-'>B-</option>
-                <option value='O+'>O+</option>
-            </select>
-        </div>
-        <div className="namein">
-        <select className='gendermain' id='gender' onChange={handleChange} value={add.gender}>
-                <option value=''>Select Gender</option>
-                <option value='Male'>Male</option>
-                <option value='Female'>Female</option>
-                <option value='Other'>Other</option>
-            </select>
+        <div className="messin">
+            <input type="text" className="messmain" placeholder='Message, mention blood group and contact no' name="message" id='message' onChange={handleChange} value={add.message} style={{height:'50px'}}/>
         </div>
         <div className="mainbut">
-            <button onClick={()=>{handleSubmit(add)}}>Add me</button>
+            <button onClick={sendEmail}>Send</button>
         </div>
+    </form>
     </div>
+    <h4>Note : The email will be sent to admin.</h4>
     </>
   )
 }

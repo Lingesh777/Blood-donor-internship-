@@ -1,5 +1,5 @@
 .mainbody {
-    max-width: 400px;
+    max-width: 500px;
     margin: auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -10,10 +10,7 @@
 
 .namein,
 .emailin,
-.mobilein,
-.districtin,
-.bloodin,
-.namein {
+.messin,.mobilein,.districtint {
     margin-bottom: 15px;
 }
 
@@ -21,7 +18,7 @@ input[type="text"],
 input[type="email"],
 input[type="number"],
 select {
-    width: 90%;
+    width: 300px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;

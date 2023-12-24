@@ -1,0 +1,30 @@
+.reptot{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width:20vw;
+    height:15vh;
+    margin:30px 0px 0px 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+.repbox{
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width:20vw;
+    height:15vh;
+    margin-top: 30px;
+    margin-left: 80px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+.reportbody{
+    display: grid;
+    grid-template-columns: 400px 400px 400px;
+    column-gap: 20px;
+}
+.repbox:hover,.reptot:hover{
+    transform: scale(1.1);
+}

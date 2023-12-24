@@ -19,6 +19,8 @@ export const Signup = () => {
         navigate('/login')
     }
   return (
+    <>
+    <h3>Register, To donate blood</h3>
     <div className='signupbody'>
     <div className="signupleft">
     <img src='https://health.gov.tt/sites/default/files/styles/large/public/inline-images/Blood%20Bank%20logo%202022-03.png?itok=0H-a6QNb'
@@ -32,7 +34,7 @@ export const Signup = () => {
             <input type="email" className="emailsign" placeholder='Email' id='email' onChange={handleChange} value={add.email}/>
         </div>
         <div className="passs">
-            <input type="password" className="passsign" placeholder='Password' id='password' onChange={handleChange} value={add.password}/>
+            <input type="password" className="passsign" placeholder='Password' id='password' onChange={handleChange} value={add.password} style={{width:"22vw"}}/>
         </div>
         <div className="mobiles">
             <input type="number" className="mobilesign" placeholder='Mobile' id='mobile' onChange={handleChange} value={add.mobile}/>
@@ -48,6 +50,7 @@ export const Signup = () => {
                 <option value='B+'>B+</option>
                 <option value='B-'>B-</option>
                 <option value='O+'>O+</option>
+                <option value='O-'>O-</option>
             </select>
         </div>
         <div className="genders">
@@ -71,5 +74,6 @@ export const Signup = () => {
         <h4 style={{marginBottom:'10px'}}>Already an user ? <span onClick={()=>{navigate('/login')}} style={{cursor:'pointer',color:'red'}}>Login</span></h4>
     </div>
     </div>
+    </>
   )
 }

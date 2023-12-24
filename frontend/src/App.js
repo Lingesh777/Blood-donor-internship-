@@ -10,6 +10,8 @@ import { Signup } from './day3/Signup/Signup';
 import { Login } from './day3/Login/Login';
 import { Viewuser } from './day2/View/Viewuser';
 import { Edituser } from './day2/Edit/Edituser';
+import { TopbarUser } from './day2/Topbar/TopbarUser';
+import { Report } from './day3/Report/Report';
 
 function App() {
   return (
@@ -19,12 +21,14 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/main' element={<Main/>}/>
         <Route path='/topbar' element={<Topbar/>}/>
+        <Route path='/topbaruser' element={<TopbarUser/>}/>
         <Route path='/view' element={<View/>}/>
-        <Route path='/viewuser/:id' element={<Viewuser/>}/>
+        <Route path='/viewuser' element={<Viewuser/>}/>
         <Route path='/edit/:id' element={<Edit/>}/>
-        <Route path='/edituser/:id' element={<Edituser/>}/>
+        <Route path='/edituser' element={<Edituser/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/report' element={<Report/>}/>
 
       </Routes>
     </BrowserRouter>
